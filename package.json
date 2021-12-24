@@ -5,22 +5,29 @@
   "license": "",
   "scripts": {
     "build": "remix build",
-    "dev": "remix dev",
+    "dev:css": "tailwindcss -i ./styles/tailwind.css -o ./app/tailwind.css --watch",
+    "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
     "postinstall": "remix setup node",
-    "start": "remix-serve build"
+    "start": "remix-serve build",
+    "prettier": "prettier --config .prettierrc.json --write \"app/**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "@remix-run/react": "1.1.1",
-    "@remix-run/serve": "1.1.1",
+    "@remix-run/react": "^1.0.6",
+    "@remix-run/serve": "^1.0.6",
+    "@remix-run/vercel": "^1.0.6",
+    "classcat": "5.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "remix": "1.1.1"
   },
   "devDependencies": {
     "@remix-run/dev": "1.1.1",
-    "@types/react": "^17.0.24",
-    "@types/react-dom": "^17.0.9",
-    "typescript": "^4.1.2"
+    "@types/react": "17.0.37",
+    "@types/react-dom": "17.0.11",
+    "concurrently": "6.4.0",
+    "prettier": "2.5.1",
+    "tailwindcss": "3.0.1",
+    "typescript": "4.5.3"
   },
   "engines": {
     "node": ">=14"
